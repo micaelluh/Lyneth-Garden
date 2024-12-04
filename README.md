@@ -3,170 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Shop</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Online Shopping Platform</title>
+  <style>
+    /* CSS for styling the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .products {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 200px;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    .product .price {
+      font-size: 1.3em;
+      color: green;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .customer-info {
+      margin-top: 20px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    form button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    #cart {
+      margin-top: 20px;
+    }
+
+    #cartItems {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #cartItems li {
+      background-color: #f9f9f9;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    #totalPrice {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <h1>Welcome to the Online Shop</h1>
+    <h1>Welcome to Our Online Shop</h1>
   </header>
 
-  <div class="product-list">
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product 1">
-      <h2>Product 1</h2>
-      <p>$25.00</p>
-      <button class="add-to-cart" onclick="addToCart('Product 1', 25)">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product 2">
-      <h2>Product 2</h2>
-      <p>$40.00</p>
-      <button class="add-to-cart" onclick="addToCart('Product 2', 40)">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product 3">
-      <h2>Product 3</h2>
-      <p>$15.00</p>
-      <button class="add-to-cart" onclick="addToCart('Product 3', 15)">Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product 4">
-      <h2>Product 4</h2>
-      <p>$30.00</p>
-      <button class="add-to-cart" onclick="addToCart('Product 4', 30)">Add to Cart</button>
-    </div>
-  </div>
+  <main>
+    <section class="products">
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Product 1">
+        <h3>Product 1</h3>
+        <p class="price">$19.99</p>
+        <button onclick="addToCart('Product 1', 19.99)">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Product 2">
+        <h3>Product 2</h3>
+        <p class="price">$29.99</p>
+        <button onclick="addToCart('Product 2', 29.99)">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Product 3">
+        <h3>Product 3</h3>
+        <p class="price">$39.99</p>
+        <button onclick="addToCart('Product 3', 39.99)">Add to Cart</button>
+      </div>
+    </section>
 
-  <div id="cart">
-    <h2>Your Cart</h2>
-    <ul id="cart-items">
-      <!-- Cart items will appear here -->
-    </ul>
-    <p id="total-price">Total: $0.00</p>
-  </div>
+    <section class="customer-info">
+      <h2>Customer Information</h2>
+      <form id="customerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea><br><br>
 
-  <script src="script.js"></script>
+        <button type="submit">Submit Order</button>
+      </form>
+    </section>
 
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cartItems">
+        <!-- Cart items will be listed here -->
+      </ul>
+      <p id="totalPrice">Total: $0.00</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Online Shop</p>
+  </footer>
+
+  <script>
+    // JavaScript to handle cart and form submission
+    let cart = [];
+    let total = 0;
+
+    function addToCart(product, price) {
+      // Add product to the cart array
+      cart.push({ product, price });
+      total += price;
+
+      // Update cart display
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      const totalPrice = document.getElementById('totalPrice');
+      
+      // Clear the cart list
+      cartItems.innerHTML = '';
+      
+      // Add each item in the cart to the display
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+      });
+
+      // Update the total price
+      totalPrice.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    document.getElementById('customerForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent page refresh
+      
+      // Get customer info
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+
+      // Display a confirmation message
+      alert(`Order submitted! \n\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nTotal: $${total.toFixed(2)}`);
+
+      // Optionally, you can reset the form and cart after submission
+      document.getElementById('customerForm').reset();
+      cart = [];
+      total = 0;
+      updateCart();
+    });
+  </script>
 </body>
 </html>
-
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-header {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.product-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 20px;
-}
-
-.product {
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  margin: 10px;
-}
-
-.product img {
-  width: 100%;
-  height: auto;
-}
-
-.product h2 {
-  font-size: 18px;
-}
-
-.product p {
-  color: green;
-  font-size: 16px;
-}
-
-.add-to-cart {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.add-to-cart:hover {
-  background-color: #218838;
-}
-
-#cart {
-  position: fixed;
-  right: 20px;
-  top: 100px;
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#cart h2 {
-  margin-top: 0;
-}
-
-#cart-items {
-  list-style-type: none;
-  padding: 0;
-}
-
-#cart-items li {
-  padding: 5px 0;
-}
-
-#total-price {
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-
-
-let cart = [];
-let total = 0;
-
-function addToCart(productName, productPrice) {
-  // Add the product to the cart
-  cart.push({ name: productName, price: productPrice });
-
-  // Update the total price
-  total += productPrice;
-
-  // Display the cart items and total price
-  updateCart();
-}
-
-function updateCart() {
-  const cartItemsContainer = document.getElementById('cart-items');
-  const totalPriceContainer = document.getElementById('total-price');
-
-  // Clear the current cart items
-  cartItemsContainer.innerHTML = '';
-
-  // Display the updated cart items
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-    cartItemsContainer.appendChild(li);
-  });
-
-  // Update the total price
-  totalPriceContainer.textContent = `Total: $${total.toFixed(2)}`;
-}
